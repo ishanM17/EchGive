@@ -1,10 +1,12 @@
 import React from 'react'
 import './Home.css';
-
+import Nav from './Nav'
+import Form from './DonationForm'
 export default function Home() {
   return (
     <div>
-      <h1>EchoGive</h1>
+      <Nav />
+      <Form />
     </div>
   )
 }

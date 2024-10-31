@@ -22,7 +22,10 @@ export default function App() {
     type: '',
     quantity: '',
     description: '',
-    image: null
+    image: null,
+    name: '',
+    mobileNumber: '',
+    address: ''
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -66,6 +69,9 @@ export default function App() {
         quantity: donationData.quantity,
         description: donationData.description,
         imageUrl: donationData.imageUrl,
+        name: donationData.name,
+        mobileNumber: donationData.mobileNumber,
+        address: donationData.address,
         createdAt: new Date().toISOString()
       }
     };
@@ -85,7 +91,7 @@ export default function App() {
 
     try {
       // Validate form
-      if (!donation.type || !donation.quantity || !donation.image) {
+      if (!donation.type || !donation.quantity || !donation.image || !donation.name || !donation.mobileNumber) {
         throw new Error("Please fill in all required fields and upload an image");
       }
 
@@ -103,7 +109,10 @@ export default function App() {
         type: '',
         quantity: '',
         description: '',
-        image: null
+        image: null,
+        name: '',
+        mobileNumber: '',
+        address: ''
       });
 
       // Reset file input
@@ -122,7 +131,44 @@ export default function App() {
     <div className="container mt-4">
       <form style={{ maxWidth: "40%", margin: "0px auto" }} onSubmit={handleSubmit}>
         {error && <div className="alert alert-danger">{error}</div>}
-        
+
+        <div className="form-group">
+          <label>Name</label>
+          <input 
+            className="form-control my-3"
+            name="name"
+            value={donation.name}
+            onChange={handleChange}
+            type="text"
+            placeholder="Enter your name"
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Mobile Number</label>
+          <input 
+            className="form-control my-3"
+            name="mobileNumber"
+            value={donation.mobileNumber}
+            onChange={handleChange}
+            type="number"
+            placeholder="Enter your mobile number"
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Address</label>
+          <textarea 
+            className="form-control my-3"
+            name="address"
+            value={donation.address}
+            onChange={handleChange}
+            placeholder="Enter your address"
+          />
+        </div>
+
         <div className="form-group">
           <label>Product Type</label>
           <select 
