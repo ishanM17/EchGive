@@ -1,0 +1,19 @@
+.form-heading {
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+.form-container {
+    margin: 0 auto 40px;
+    background-image: linear-gradient(to bottom right, rgba(27, 103, 16, 0.3), rgba(23, 123, 83, 0.3));
+    width: 65%;
+    padding: 70px 60px 10px;
+    border-radius: 15px;
+}
+
+.submit-btn {
+    font-size: 1.25rem;
+    font-weight: 500;
+    border-width: 2px
+    
+}

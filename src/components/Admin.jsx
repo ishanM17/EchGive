@@ -4,6 +4,7 @@ import { DynamoDBDocumentClient, ScanCommand, UpdateCommand } from "@aws-sdk/lib
 import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { AWS_CONFIG } from '../config/aws-config';
+import './Admin.css';
 
 // Initialize AWS clients
 const ddbClient = new DynamoDBClient(AWS_CONFIG);
@@ -67,7 +68,7 @@ export default function Admin() {
       // Here you would update the DynamoDB item with the new completion status
       // This is a placeholder for the update command
       const updateParams = {
-        TableName: "donations",
+        TableName: "Donations",
         Key: { donationId },
         UpdateExpression: "set isCompleted = :isCompleted",
         ExpressionAttributeValues: {
@@ -110,12 +111,12 @@ export default function Admin() {
 
   return (
     <div className="container my-4">
-      <h1 className="text-center mb-4">Donation Submissions</h1>
+      <h1 className="text-center mb-5 mt-5">Donation Submissions</h1>
       
       <div className="row">
         {donations.map((donation) => (
           <div className="col-md-4 mb-4" key={donation.donationId}>
-            <div className="card">
+            <div className={`card card-${donation.isCompleted? "complete":"incomplete"}`}>
               <img
                 src={donation.imageUrl || '/placeholder-image.jpg'}
                 alt={`${donation.type} donation`}

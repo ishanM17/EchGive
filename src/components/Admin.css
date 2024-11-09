@@ -1,0 +1,12 @@
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-incomplete {
+    background-color: rgb(95, 228, 97, 0.2);
+}
+
+.card-complete {
+    background-color: rgba(228, 95, 95, 0.2);
+}
